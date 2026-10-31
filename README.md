@@ -100,11 +100,11 @@ La taille et le contenu de la pile devront rester inchangés.
 
 Retourne le nombre d'éléments actuellement présents dans la pile.
 
-### 5.6. `isempty(stack)`
+### 5.6. `is_empty(stack)`
 
 Retourne `True` si la pile est vide et `False` dans le cas contraire.
 
-### 5.7. `isfull(stack)`
+### 5.7. `is_full(stack)`
 
 Retourne `True` si la pile a atteint sa capacité maximale et `False` dans le cas contraire.
 
