@@ -36,12 +36,15 @@ def read_metadata(catalogue_stack):
     #               data
     print("les métadonnées")
     print("-" * 100)
-    print(f" succès              :{catalogue_stack.get('success')}")
-    print(f" error_code          :{catalogue_stack.get('error_code')}")
-    print(f" information_code    :{catalogue_stack.get('information_code')}")
-    print(f" error_message       :{catalogue_stack.get('error_message')}")
-    print(f" information_message :{catalogue_stack.get('information_message')}")
-    print(f" data                :{catalogue_stack.get('data')}")
+    print(f" succès                      :{catalogue_stack.get('success')}")
+    print(f" error_code                  :{catalogue_stack.get('error_code')}")
+    print(f" information_code            :{catalogue_stack.get('information_code')}")
+    print(f" error_message               :{catalogue_stack.get('error_message')}")
+    print(f" information_message         :{catalogue_stack.get('information_message')}")
+    data = catalogue_stack.get('data')
+    print(f" data (Métadonnées + stack)  :{data}")
+    if data is not None:
+        print(f" data stack                  :{data[4:]}")
     print("")
 
 
@@ -51,11 +54,14 @@ def read_metadata_with_functions(catalogue_stack):
     # utilisation des fonctions pour lire les métadonnées
     print("Utilisation des fonctions pour lire les métadonnées")
     print("-" * 100)
-    print(f"get_error_code          :{get_error(catalogue_stack)}")
-    print(f"get_error_message       :{get_error_message(catalogue_stack)}")
-    print(f"get_information_code    :{get_information(catalogue_stack)}")
-    print(f"get_information_message :{get_information_message(catalogue_stack)}")
-    print(f"get_stack               :{get_stack(catalogue_stack)}")
+    print(f"get_error_code                    :{get_error(catalogue_stack)}")
+    print(f"get_error_message                 :{get_error_message(catalogue_stack)}")
+    print(f"get_information_code              :{get_information(catalogue_stack)}")
+    print(f"get_information_message           :{get_information_message(catalogue_stack)}")
+    print(f"get_stack   (Métadonnées + stack) :{get_stack(catalogue_stack)}")
+    data = get_stack(catalogue_stack)
+    if data is not None:
+        print(f"get_stack   (stack)               :{data[4:]}")
     print("")
 
 

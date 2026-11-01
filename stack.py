@@ -235,8 +235,12 @@ def is_full(catalogue_stack):
     )
 
 
-def get_size(stack):
+def get_size(catalogue_stack):
     """Retourne le nombre d'éléments présents dans la pile."""
+    if isinstance(catalogue_stack, dict):
+        stack = catalogue_stack.get("data")
+    else:
+        stack = catalogue_stack
 
     if not is_valid_stack(stack):
         return None
@@ -323,122 +327,9 @@ def get_information_message(catalogue_stack):
 # ============================================================
 
 
-def push(catalogue_stack, element):
+# TODO
+# push
+# peek
+# pop
 
 
-    # Vérifier la structure de la pile.
-
-    stack = get_stack(catalogue_stack)
-
-    if not is_valid_stack(stack):
-        return create_stack_result(
-            False,
-            STACK_ERROR_INVALID_STRUCTURE,
-            STACK_STATUS_NONE
-        )
-
-    # Vérifier la validité de l'élément.
-    if element is None:
-        stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_INVALID_ELEMENT
-
-        return create_stack_result(
-            False,
-            STACK_ERROR_INVALID_ELEMENT,
-            stack[STACK_STATUS_CODE_INDEX],
-            stack
-        )
-
-    # Vérifier si la pile est pleine.
-    if is_full(stack):
-        stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_FULL
-
-        return create_stack_result(
-            False,
-            STACK_ERROR_FULL,
-            stack[STACK_STATUS_CODE_INDEX],
-            stack
-        )
-
-    # Calculer l'index du prochain emplacement libre.
-    current_index = (
-        stack[STACK_CURRENT_SIZE_INDEX] + STACK_METADATA_SIZE
-    )
-
-    # Ajouter l'élément au sommet.
-    stack[current_index] = element
-
-    # Actualiser les métadonnées.
-    stack[STACK_CURRENT_SIZE_INDEX] += 1
-    stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_NONE
-
-    # Retourner le catalogue de succès.
-    return create_stack_result(
-        True,
-        STACK_ERROR_NONE,
-        stack[STACK_STATUS_CODE_INDEX],
-        stack
-    )
-
-
-
-def peek(catalogue_stack):
-    """
-    Consulte le sommet de la pile sans retirer l'élément.
-
-    Returns:
-        object | None: Élément au sommet ou None si impossible.
-    """
-
-    stack = get_stack(catalogue_stack)
-
-    if not is_valid_stack(stack):
-        return None
-
-    if is_empty(stack):
-        stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_EMPTY
-        return None
-
-    # Calculer l'index du sommet.
-    current_index = (
-        stack[STACK_CURRENT_SIZE_INDEX]
-        + STACK_METADATA_SIZE - 1
-    )
-
-    stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_NONE
-
-    return stack[current_index]
-
-
-def pop(catalogue_stack):
-    """
-    Retire et retourne l'élément situé au sommet de la pile.
-
-    Returns:
-        object | None: Élément retiré ou None si impossible.
-    """
-    stack = get_stack(catalogue_stack)
-
-    if not is_valid_stack(stack):
-        return None
-
-    if is_empty(stack):
-        stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_EMPTY
-        return None
-
-    # Calculer l'index du sommet.
-    current_index = (
-        stack[STACK_CURRENT_SIZE_INDEX]
-        + STACK_METADATA_SIZE - 1
-    )
-
-    # Récupérer l'élément.
-    element = stack[current_index]
-
-    # Libérer l'emplacement.
-    stack[current_index] = 0
-
-    # Actualiser les métadonnées.
-    stack[STACK_CURRENT_SIZE_INDEX] -= 1
-    stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_NONE
-
-    return element
