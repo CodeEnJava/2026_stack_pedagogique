@@ -8,6 +8,8 @@ Objectifs :
     - Vérifier la lecture des métadonnées du catalogue.
     - Vérifier la lecture des métadonnées à l'aide des fonctions
       du module stack.
+
+      tests du 01/11/2026
 """
 
 
