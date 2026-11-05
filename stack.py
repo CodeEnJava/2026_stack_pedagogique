@@ -277,6 +277,7 @@ def get_error(catalogue_stack):
     if not is_valid_stack(catalogue_stack):
         return STACK_ERROR_INVALID_STRUCTURE
 
+
     return catalogue_stack[STACK_ERROR_CODE_INDEX]
 
 
@@ -328,8 +329,82 @@ def get_information_message(catalogue_stack):
 
 
 # TODO
-# push
-# peek
+
+
 # pop
+
+def push(catalogue_stack, element):
+
+    # Vérifier la structure de la pile
+
+    stack = get_stack(catalogue_stack)
+
+    if not is_valid_stack(stack):
+        return create_stack_result(
+            False,
+            STACK_ERROR_INVALID_STRUCTURE,
+            STACK_STATUS_NONE
+        )
+
+    # Vérifier la validité de l'élément
+
+    if element is None:
+        stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_INVALID_ELEMENT
+        return create_stack_result(
+            False,
+            STACK_ERROR_INVALID_ELEMENT,
+            stack[STACK_STATUS_CODE_INDEX],
+            stack
+        )
+
+    # Vérifier si la pile n'est pas pleine, on peut empiler l'élément
+    if is_full(catalogue_stack):
+        stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_FULL
+
+        return create_stack_result(
+            False,
+            STACK_ERROR_FULL,
+            stack[STACK_STATUS_CODE_INDEX],
+            stack
+        )
+    # Calculer l'index du prochain emplacement libre
+    current_index = stack[STACK_CURRENT_SIZE_INDEX] + STACK_METADATA_SIZE
+
+    # ajouter l'élément au sommet
+    stack[current_index] =  element
+
+    # Actualiser les métadonnées
+    stack[STACK_CURRENT_SIZE_INDEX] += 1
+    stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_NONE
+
+    # retourner le catalogue de succès
+    return create_stack_result(
+        True,
+        STACK_ERROR_NONE,
+        stack[STACK_STATUS_CODE_INDEX],
+        stack
+    )
+
+def peek(catalogue_stack):
+    # consulte le sommet de la pile sans le retirer
+
+    stack = get_stack(catalogue_stack)
+
+    if not is_valid_stack(stack):
+        return None
+
+    if is_empty(catalogue_stack):
+        stack[STACK_ERROR_CODE_INDEX] =STACK_ERROR_EMPTY
+        return None
+
+    # calculer le sommet de la pile
+
+    current_index =  stack[STACK_CURRENT_SIZE_INDEX] + STACK_METADATA_SIZE - 1
+    stack[STACK_ERROR_CODE_INDEX] = STACK_ERROR_NONE
+
+    return stack[current_index]
+
+
+
 
 

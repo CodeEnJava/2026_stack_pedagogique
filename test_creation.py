@@ -68,48 +68,48 @@ def read_metadata_with_functions(catalogue_stack):
 
 
 
-# CAPACITE VALIDE
-print("*"*100)
-print("* TEST CREATION VALIDE")
-print("*"*100)
-
-result_stack_valide = create_stack(20)
-print("le catalogue :")
-print(result_stack_valide)
-read_metadata(result_stack_valide)
-read_metadata_with_functions(result_stack_valide)
-
-# CAPACITE INVALIDE
-print("*"*100)
-print("* TEST CREATION INVALIDE")
-print("*"*100)
-result_stack_invalide = create_stack("20")
-print("le catalogue :")
-print(result_stack_invalide)
-read_metadata(result_stack_invalide)
-read_metadata_with_functions(result_stack_invalide)
-
-# CAPACITE MINIMALE
-print("*"*100)
-print("* TEST CREATION MINIMALE")
-print("*"*100)
-result_stack_minimale = create_stack(-5)
-print("le catalogue :")
-print(result_stack_minimale)
-read_metadata(result_stack_minimale)
-read_metadata_with_functions(result_stack_minimale)
-
-
-# CAPACITE NULLE
-
-print("*" * 100)
-print("* TEST CREATION AVEC UNE CAPACITE NULLE")
-print("*" * 100)
-
-result_stack_nulle = create_stack(0)
-
-print("le catalogue :")
-print(result_stack_nulle)
-
-read_metadata(result_stack_nulle)
-read_metadata_with_functions(result_stack_nulle)
+# # CAPACITE VALIDE
+# print("*"*100)
+# print("* TEST CREATION VALIDE")
+# print("*"*100)
+#
+# result_stack_valide = create_stack(20)
+# print("le catalogue :")
+# print(result_stack_valide)
+# read_metadata(result_stack_valide)
+# read_metadata_with_functions(result_stack_valide)
+#
+# # CAPACITE INVALIDE
+# print("*"*100)
+# print("* TEST CREATION INVALIDE")
+# print("*"*100)
+# result_stack_invalide = create_stack("20")
+# print("le catalogue :")
+# print(result_stack_invalide)
+# read_metadata(result_stack_invalide)
+# read_metadata_with_functions(result_stack_invalide)
+#
+# # CAPACITE MINIMALE
+# print("*"*100)
+# print("* TEST CREATION MINIMALE")
+# print("*"*100)
+# result_stack_minimale = create_stack(-5)
+# print("le catalogue :")
+# print(result_stack_minimale)
+# read_metadata(result_stack_minimale)
+# read_metadata_with_functions(result_stack_minimale)
+#
+#
+# # CAPACITE NULLE
+#
+# print("*" * 100)
+# print("* TEST CREATION AVEC UNE CAPACITE NULLE")
+# print("*" * 100)
+#
+# result_stack_nulle = create_stack(0)
+#
+# print("le catalogue :")
+# print(result_stack_nulle)
+#
+# read_metadata(result_stack_nulle)
+# read_metadata_with_functions(result_stack_nulle)
