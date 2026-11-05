@@ -122,7 +122,7 @@ def create_stack(max_size):
     """
 
     # Vérifier le type de la capacité.
-    if not isinstance(max_size, int) or isinstance(max_size, bool):
+    if not isinstance(max_size, int):
         return create_stack_result(
             False,
             STACK_ERROR_INVALID_CAPACITY,
@@ -181,7 +181,7 @@ def is_valid_stack(stack):
     metadata = (max_size, error_code, current_size, status_code)
 
     for value in metadata:
-        if not isinstance(value, int) or isinstance(value, bool):
+        if not isinstance(value, int):
             return False
 
     # Vérifier la capacité.
